@@ -18,9 +18,9 @@
 void main()
  {
      startgraph();
-     setbkcolor(CYAN); //changes background color
+     setbkcolor(CYAN); 
      initmouse();
-   //  graph();
+   
       //Step 1: making flag 3 bands..
     setfillstyle(1,LIGHTRED);
     bar(100,360,280,390);
@@ -29,7 +29,7 @@ void main()
     setcolor(BLUE);
       for(int i=0;i<=360;i=i+15)
        {
-	 pieslice(190,405,i,i+15,15); //24 spokes...
+	 pieslice(190,405,i,i+15,15); 
        } //end for..
        circle(190,405,14); //outer circle...
        fillellipse(190,405,4,4);//tiny circle..
@@ -40,22 +40,22 @@ void main()
     void *flagbuf = (void*)malloc(imgsize);
     getimage(100,360,280,450,flagbuf);
 
-    //Next make stick of flag..
+    //stick of flag..
     setfillstyle(3,DARKGRAY);
     bar3d(90,20,99,460,0,0);
-    //Next making base of flag..
+    // base of flag..
     setfillstyle(2,BLUE);
     bar3d(20,460,170,470,0,0);
 
     showmouse();
      while(1)
       {
-       getmouse();    //px,py,click update...
+       getmouse();   
        if(px>=100&&px<=280&&py>=360&&py<=450 && click==1)
 	{
 	 hidemouse();
-	 //off the earlier image:
-	 putimage(100,360,flagbuf,1); //image off.
+	 
+	 putimage(100,360,flagbuf,1); 
 	 for(int y=360;y>=20;y=y-5)
 	   {
 	     putimage(100,y,flagbuf,1); //image on...
@@ -65,37 +65,36 @@ void main()
 	      {
 		  putimage(100,y,flagbuf,1);//set image on...
 		  showmouse();  goto end;
-	      }//end if..
-	   } //end for...
+	      }
+	   } 
 
-
-	} //end if...
-
-
+	} 
 
 
 
-      } //end while...
+
+
+      } 
 
      end:
      getch();
-     cleardevice(); //clear    to avoid distortion at end of program.
+     cleardevice(); 
      restorecrtmode();
      closegraph(); //shuts down graphics system.
 
- } //end main...
+ } 
     void graph()
      {
       int x; //x axis
       int y; // y axis
       int i; //loop
-      char xsg[10]; //x coordinate message.
-      char ysg[10]; // y .....
+      char xsg[10]; 
+      char ysg[10]; 
       setbkcolor(DARKGRAY);
       settextstyle(2,0,2);
        for(x=0,y=0;x<=639;x=x+20,y=y+20)
 	{
-	  //for x axis..
+	  
 	  setcolor(WHITE);
 	  line(x,0,x,479);
 	  sprintf(xsg,"%d",x);
@@ -107,31 +106,31 @@ void main()
 	  outtextxy(0+2,y+1,ysg);
 	  //red color for x and y axis...
 	  setcolor(RED);
-	  line(x+10,0+10,x+10,479);  //x axis..
-	  line(0+10,y+10,639,y+10); //y axis..
-	} //end for...
+	  line(x+10,0+10,x+10,479);  .
+	  line(0+10,y+10,639,y+10); 
+	} 
 
 
 
-     } //end graph()...
+     } 
 
     void initmouse()
       {
        in.x.ax =0;
        int86(51, &in, &out);
-      } //end of initmouse()..
+      } 
     void showmouse()
       {
 	 in.x.ax =1;
 	 int86(51,&in,&out);
 
-      } //end showmouse()..
+      } 
    void hidemouse()
      {
 	 in.x.ax =2;
 	 int86(51,&in,&out);
 
-     } //end hidemouse..
+     } 
    void getmouse()
     {
       in.x.ax =3;
@@ -140,7 +139,7 @@ void main()
       px=out.x.cx;   //x
       py = out.x.dx; //y
 
-    }  //end of getmouse();
+    } 
    void setmouse(int &px,int &py)
      {
 
@@ -148,22 +147,21 @@ void main()
        in.x.cx = px;
        in.x.dx = py;
        int86(0x33,&in,&out);
-     } //end of setmouse()...
+     } 
  void startgraph()
    {
-   //request for autodetection...
+ 
    int gd = DETECT, gm, errcode;
-    //intialize graphics system.
+    
     initgraph(&gd, &gm, "c:\\tc\\bgi");  delay(50);
-    //read result of initialization.
+  
     errcode = graphresult();
-     if(errcode != grOk) //some error...
+     if(errcode != grOk) 
        {
 	 cout<<"Graphics err msg: "<<grapherrormsg(errcode)<<endl;
 	 getch();
-	  exit(1); //terminate code...
-       } //end if...
+	  exit(1); 
+       } 
 
 
-
-   } //end startgraph()...
+   } 
