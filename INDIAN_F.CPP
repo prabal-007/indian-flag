@@ -69,11 +69,6 @@ void main()
 	   } 
 
 	} 
-
-
-
-
-
       } 
 
      end:
@@ -109,9 +104,6 @@ void main()
 	  line(x+10,0+10,x+10,479);  .
 	  line(0+10,y+10,639,y+10); 
 	} 
-
-
-
      } 
 
     void initmouse()
@@ -162,6 +154,4 @@ void main()
 	 getch();
 	  exit(1); 
        } 
-
-
    } 
